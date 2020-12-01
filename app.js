@@ -31,7 +31,7 @@ function ToBuyController(ShoppingListCheckOffService) {
     }
 
     toBuyList.empty = function() {
-        return (toBuyList.items == "");
+        return (toBuyList.items.length == 0);
     }
 }
 
@@ -44,7 +44,7 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
     itemsBought.items = ShoppingListCheckOffService.getItems("bought");  //this is to display the list of bought items
 
     itemsBought.empty = function() {
-        return (itemsBought.items == "");
+        return (itemsBought.items.length == 0);
     }
 }
 
