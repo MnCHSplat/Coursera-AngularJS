@@ -29,6 +29,10 @@ function ToBuyController(ShoppingListCheckOffService) {
     toBuyList.itemBought = function(itemIndex) {
         ShoppingListCheckOffService.moveItem(itemIndex); //moveItem function moves items from the toBuy list to the Bought list
     }
+
+    toBuyList.empty = function() {
+        return (toBuyList.items == "");
+    }
 }
 
 
@@ -38,6 +42,10 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
     var itemsBought = this;
 
     itemsBought.items = ShoppingListCheckOffService.getItems("bought");  //this is to display the list of bought items
+
+    itemsBought.empty = function() {
+        return (itemsBought.items == "");
+    }
 }
 
 
@@ -63,5 +71,5 @@ function ShoppingListCheckOffService() { //Shared Services function
 }
 })();
 
-// Line 67 is the compressed Javascript, which works identically, without error, as the code in lines 1-64
+// Line 75 is the compressed Javascript, which works identically, without error, as the code in lines 1-72
 // !function(){"use strict";var t=angular.module("ShoppingListCheckOff",[]);t.controller("ToBuyController",e),t.controller("AlreadyBoughtController",i),t.service("ShoppingListCheckOffService",function(){var e=n,i=[];this.getItems=function(t){return"toBuy"===t?e:i},this.moveItem=function(t){i.push(e[t]),e.splice(t,1)}});var n=[{name:"eggs",quantity:"1"},{name:"steak",quantity:"2"},{name:"Mountain Dew",quantity:"24"},{name:"cookies",quantity:"30"},{name:"Orange Juice",quantity:"1"}];function e(e){this.items=e.getItems("toBuy"),this.itemBought=function(t){e.moveItem(t)}}function i(t){this.items=t.getItems("bought")}e.$inject=["ShoppingListCheckOffService"],i.$inject=["ShoppingListCheckOffService"]}();
